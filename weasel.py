@@ -7,7 +7,9 @@ of cumulative selection.
 
 import sys
 import random
-from string import ascii_uppercase
+from string import ascii_letters, digits
+
+alphabet = ascii_letters + ' ' + digits
 
 
 def tournament(population, target, n):
@@ -46,7 +48,7 @@ def crossover(parent1, parent2):
 
 def mutation(individual):
     index = random.randint(0, len(individual) - 1)
-    individual[index] = random.choice(ascii_uppercase + ' ')
+    individual[index] = random.choice(alphabet)
 
     return individual
 
@@ -111,7 +113,7 @@ if __name__ == '__main__':
 
     population = []
     for i in range(population_size):
-        message = [random.choice(ascii_uppercase) for _ in range(len(target))]
+        message = [random.choice(alphabet) for _ in range(len(target))]
 
         population.append(message)
 
