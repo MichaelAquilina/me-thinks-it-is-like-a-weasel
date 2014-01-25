@@ -7,6 +7,7 @@ his book 'The Blind Watchmaker' as a way of explaining accumulations of small ch
 of cumulative selection.
 """
 
+import sys
 import random
 from string import ascii_uppercase
 
@@ -87,7 +88,7 @@ def selection(population, fitness_values):
 def argmax(numbers):
 
     max_index = None
-    max_value = -10000
+    max_value = -sys.maxint - 1
     for index, value in enumerate(numbers):
         if value > max_value:
             max_value = value
