@@ -101,8 +101,8 @@ if __name__ == '__main__':
     import time
 
     target = 'ME THINKS IT IS LIKE A WEASEL'
-    population_size = 400  # Larger population sizes seem to be better
-    mutation_rate = 0.10
+    population_size = 180  # Larger population sizes seem to be better
+    mutation_rate = 0.20
 
     population = []
     for i in range(population_size):
