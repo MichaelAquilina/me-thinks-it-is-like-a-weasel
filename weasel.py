@@ -84,7 +84,7 @@ if __name__ == '__main__':
 
     target = 'ME THINKS IT IS LIKE A WEASEL'
     population_size = 400  # Larger population sizes seem to be better
-    mutation_rate = 0.15
+    mutation_rate = 0.10
 
     population = []
     for i in range(population_size):
@@ -93,15 +93,17 @@ if __name__ == '__main__':
         population.append(message)
 
     t0 = time.time()
+    count = 0
 
     print 'Target = {}'.format(target)
     while True:
         fitness_values = evaluate(population, target)
+        count += 1
 
         max_index, max_value = argmax(fitness_values)
 
         best = ''.join(population[max_index])
-        print 'Best individual: {} ({})'.format(best, max_value)
+        print 'Gen {}: {} ({})'.format(count, best, max_value)
 
         if best == target:
             break
