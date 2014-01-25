@@ -8,6 +8,7 @@ of cumulative selection.
 import sys
 import random
 from string import ascii_letters, digits
+from copy import copy
 
 alphabet = ascii_letters + ' ' + digits
 
@@ -30,7 +31,21 @@ def tournament(population, target, n):
     return result
 
 
-def crossover(parent1, parent2):
+def single_point_crossover(parent1, parent2):
+    child1 = copy(parent1)
+    child2 = copy(parent2)
+
+    split_point = random.randint(1, len(parent1) - 2)
+
+    for index in xrange(len(parent1)):
+        if index < split_point:
+            child1[index] = parent2[index]
+        else:
+            child2[index] = parent1[index]
+
+    return child1, child2
+
+def uniform_crossover(parent1, parent2):
     # Uniform crossover
     child1 = []
     child2 = []
@@ -105,13 +120,20 @@ if __name__ == '__main__':
     parser.add_argument('--target', type=str, default='Me thinks it is like a Weasel')
     parser.add_argument('--mutation-rate', '-m', type=float, default=0.20)
     parser.add_argument('--population-size', '-p', type=int, default=180)
+    parser.add_argument('--crossover', '-c', choices=('1X', 'uniform'), type=str, default='uniform')
 
     args = parser.parse_args()
+
+    crossover_operators = {
+        '1X': single_point_crossover,
+        'uniform': uniform_crossover,
+    }
 
     # Extract the parameters from the arguments
     target = args.target
     population_size = args.population_size
     mutation_rate = args.mutation_rate
+    crossover = crossover_operators[args.crossover]
 
     population = []
     for i in range(population_size):
