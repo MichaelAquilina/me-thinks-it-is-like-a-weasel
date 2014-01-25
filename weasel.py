@@ -149,4 +149,4 @@ if __name__ == '__main__':
 
         population = tournament(population + new_population, target, population_size)
 
-    print 'Reached target in {}'.format(time.time() - t0)
+    print 'Reached target in {0:.3g} seconds'.format(time.time() - t0)
