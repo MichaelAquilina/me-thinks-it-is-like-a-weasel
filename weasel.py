@@ -103,7 +103,7 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='Evolve an input sentence using a genetic algorithm')
-    parser.add_argument('--target', type=str, default='ME THINKS IT IS LIKE A WEASEL')
+    parser.add_argument('--target', type=str, default='Me thinks it looks like a Weasel')
 
     args = parser.parse_args()
     target = args.target
