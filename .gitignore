@@ -1,3 +1,9 @@
+# Pycharm
+.idea
+
+# Git
+*.orig
+
 *.py[cod]
 
 # C extensions
