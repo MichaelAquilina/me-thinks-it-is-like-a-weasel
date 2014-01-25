@@ -98,8 +98,14 @@ def argmax(numbers):
 if __name__ == '__main__':
 
     import time
+    import argparse
 
-    target = 'ME THINKS IT IS LIKE A WEASEL'
+    parser = argparse.ArgumentParser(description='Evolve an input sentence using a genetic algorithm')
+    parser.add_argument('--target', type=str, default='ME THINKS IT IS LIKE A WEASEL')
+
+    args = parser.parse_args()
+    target = args.target
+
     population_size = 180  # Larger population sizes seem to be better
     mutation_rate = 0.20
 
