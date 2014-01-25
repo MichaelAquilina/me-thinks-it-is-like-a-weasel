@@ -1,5 +1,3 @@
-#! /usr/bin/python3
-
 """
 Simple script which generates the phrase 'ME THINKS ITS LIKE A WEASEL' using an extremely simple
 genetic algorithm. This was completely inspired and based off what Richard Dawkin's performs in
