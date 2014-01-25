@@ -73,7 +73,6 @@ def evaluate(population, target):
 def selection(population, fitness_values):
 
     results = []
-
     while len(results) < 2:
         choice = random.randint(0, sum(fitness_values))
         for index, value in enumerate(fitness_values):
@@ -104,12 +103,15 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Evolve an input sentence using a genetic algorithm')
     parser.add_argument('--target', type=str, default='Me thinks it is like a Weasel')
+    parser.add_argument('--mutation-rate', '-m', type=float, default=0.20)
+    parser.add_argument('--population-size', '-p', type=int, default=180)
 
     args = parser.parse_args()
-    target = args.target
 
-    population_size = 180  # Larger population sizes seem to be better
-    mutation_rate = 0.20
+    # Extract the parameters from the arguments
+    target = args.target
+    population_size = args.population_size
+    mutation_rate = args.mutation_rate
 
     population = []
     for i in range(population_size):
