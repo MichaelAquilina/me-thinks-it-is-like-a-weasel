@@ -11,6 +11,24 @@ import random
 from string import ascii_uppercase
 
 
+def tournament(population, target, n):
+
+    result = []
+
+    while len(result) < n:
+        c1 = random.choice(population)
+        c2 = random.choice(population)
+
+        if fitness(c1, target) > fitness(c2, target):
+            result.append(c1)
+            population.remove(c1)
+        else:
+            result.append(c2)
+            population.remove(c2)
+
+    return result
+
+
 def crossover(parent1, parent2):
     # Uniform crossover
     child1 = []
@@ -120,9 +138,8 @@ if __name__ == '__main__':
                 mutation(child2)
 
             new_population.append(child1)
-            if len(new_population) < population_size:
-                new_population.append(child2)
+            new_population.append(child2)
 
-        population = new_population
+        population = tournament(population + new_population, target, population_size)
 
     print 'Reached target in {}'.format(time.time() - t0)
