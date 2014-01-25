@@ -14,7 +14,6 @@ alphabet = ascii_letters + ' ' + digits
 
 
 def tournament(population, target, n):
-
     result = []
 
     while len(result) < n:
@@ -44,6 +43,7 @@ def single_point_crossover(parent1, parent2):
             child2[index] = parent1[index]
 
     return child1, child2
+
 
 def uniform_crossover(parent1, parent2):
     # Uniform crossover
@@ -86,8 +86,8 @@ def evaluate(population, target):
 
 # Roulette wheel selection
 def selection(population, fitness_values):
-
     results = []
+
     while len(results) < 2:
         choice = random.randint(0, sum(fitness_values))
         for index, value in enumerate(fitness_values):
@@ -100,9 +100,9 @@ def selection(population, fitness_values):
 
 
 def argmax(numbers):
-
     max_index = None
     max_value = -sys.maxint - 1
+
     for index, value in enumerate(numbers):
         if value > max_value:
             max_value = value
