@@ -11,6 +11,14 @@ import random
 from string import ascii_uppercase
 
 
+def mutation(individual, rate=0.01):
+    for index, _ in enumerate(individual):
+        if random.random() < rate:
+            individual[index] = random.choice(ascii_uppercase)
+
+    return individual
+
+
 def fitness(message, target):
     value = 0
     for i in range(target):
@@ -48,3 +56,6 @@ if __name__ == '__main__':
         message = ''.join([random.choice(ascii_uppercase) for _ in range(len(target))])
 
         population.append(message)
+
+    while True:
+        fitness_values = evaluate(population)
